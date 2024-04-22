@@ -100,7 +100,7 @@ export const Navbar = () => {
                     </NavigationMenu>
                 </div>
                 <div className="flex lg:justify-center">
-                    <p className="font-semibold">Syed's Portfolio</p>
+                    <p className="font-semibold">Syed&apos;s Portfolio</p>
                 </div>
                 <div className="flex justify-end w-full gap-4">
                     <Button>Contact me</Button>
