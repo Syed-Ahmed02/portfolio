@@ -1,0 +1,56 @@
+@tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+ 
+  @layer base {
+    :root {
+      --background: 197 66% 99%;
+      --foreground: 197 79% 1%;
+      --muted: 197 15% 87%;
+      --muted-foreground: 197 9% 33%;
+      --popover: 197 66% 99%;
+      --popover-foreground: 197 79% 1%;
+      --card: 197 66% 99%;
+      --card-foreground: 197 79% 1%;
+      --border: 197 13% 90%;
+      --input: 197 13% 90%;
+      --primary: 197 71% 73%;
+      --primary-foreground: 197 71% 13%;
+      --secondary: 197 18% 91%;
+      --secondary-foreground: 197 18% 31%;
+      --accent: 197 27% 82%;
+      --accent-foreground: 197 27% 22%;
+      --destructive: 14 94% 43%;
+      --destructive-foreground: 0 0% 100%;
+      --ring: 197 71% 73%;
+      --radius: 0.5rem;
+    }
+  
+    .dark {
+      --background: 197 57% 4%;
+      --foreground: 197 37% 99%;
+      --muted: 197 15% 13%;
+      --muted-foreground: 197 9% 67%;
+      --popover: 197 57% 4%;
+      --popover-foreground: 197 37% 99%;
+      --card: 197 57% 4%;
+      --card-foreground: 197 37% 99%;
+      --border: 197 13% 10%;
+      --input: 197 13% 10%;
+      --primary: 197 71% 73%;
+      --primary-foreground: 197 71% 13%;
+      --secondary: 197 2% 14%;
+      --secondary-foreground: 197 2% 74%;
+      --accent: 197 9% 20%;
+      --accent-foreground: 197 9% 80%;
+      --destructive: 14 94% 49%;
+      --destructive-foreground: 0 0% 100%;
+      --ring: 197 71% 73%;
+    }
+  }
+  
+  body {
+    background-image: url('/bgsvg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
