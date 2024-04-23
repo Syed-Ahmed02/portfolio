@@ -5,8 +5,8 @@ import { BentoGrid, BentoGridItem } from "./ui/bento-grid"
 
 export function Projects() {
     return (
-        <div className="max-w-4xl mx-auto md:auto-rows-[20rem]">
-            <h4 className="text-3xl md:text-5xl tracking-tighter max-w-xl mb-4 font-regular">
+        <div className="">
+            <h4 className="text-center text-3xl md:text-5xl tracking-tighter  mb-4 font-regular">
                 My Work
             </h4>
 
@@ -26,7 +26,7 @@ export function Projects() {
     );
 }
 const Skeleton = () => (
-    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
+    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2]  [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
 );
 const items = [
     {

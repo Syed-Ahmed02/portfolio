@@ -3,9 +3,6 @@
 import { Check, MoveRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-
-
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
@@ -59,9 +56,6 @@ export const Contact = () => {
 
                     <div className="justify-center flex items-center">
                         <div className="rounded-md max-w-sm flex flex-col border p-8 gap-4">
-
-
-
                             <div className="grid w-full max-w-sm items-center gap-1">
                                 <Label htmlFor="firstname">First name</Label>
                                 <Input id="firstname" type="text" />
@@ -71,13 +65,14 @@ export const Contact = () => {
                                 <Input id="lastname" type="text" />
                             </div>
                             <div className="grid w-full max-w-sm items-center gap-1">
-                            <Label htmlFor="lastname">Email </Label>
+                                <Label htmlFor="lastname">Email </Label>
                                 <Input id="lastname" type="text" />
                             </div>
 
-                            <Button className="gap-4 w-full">
+                            <Button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border  bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-primary transition-colors focus:outline-none focus:ring-2 ">
                                 Submit!<MoveRight className="w-4 h-4" />
                             </Button>
+                            
                         </div>
                     </div>
                 </div>
@@ -85,3 +80,8 @@ export const Contact = () => {
         </div>
     );
 };
+
+/*
+<button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                                Shimmer
+                            </button>*/
