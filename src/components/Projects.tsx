@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
+
 import React from "react";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid"
-
+import { LayoutGrid } from "./ui/layout-grid";
 
 export function Projects() {
     return (
@@ -10,18 +10,9 @@ export function Projects() {
                 My Work
             </h4>
 
-            <BentoGrid>
-                {items.map((item, i) => (
-                    <BentoGridItem
-                        key={i}
-                        title={item.title}
-                        description={item.description}
-                        header={item.header}
-                        className={item.className}
-
-                    />
-                ))}
-            </BentoGrid>
+            <div className="h-screen py-20 w-full">
+                <LayoutGrid cards={items} />
+            </div>
         </div>
     );
 }
@@ -30,6 +21,7 @@ const Skeleton = () => (
 );
 const items = [
     {
+        id: 1,
         title: "Project 1",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
@@ -37,6 +29,7 @@ const items = [
 
     },
     {
+        id: 2,
         title: "Project 2",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
@@ -44,18 +37,21 @@ const items = [
 
     },
     {
+        id: 3,
         title: "Project 3",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
         className: "md:col-span-1",
 
-    },{
+    }, {
+        id:4,
         title: "Project 4",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
         className: "md:col-span-1",
 
-    },{
+    }, {
+        id:5,
         title: "Project 5",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
@@ -63,6 +59,7 @@ const items = [
 
     },
     {
+        id:6,
         title: "Project 6",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
@@ -70,6 +67,7 @@ const items = [
 
     },
     {
+        id:7,
         title: "Project 7",
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { libre_bodoni,roboto_mono,inter} from "./fonts";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Image from "next/image";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Syed's Portfolio",
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
-      <body className={inter.className}>
+      <body className={` ${libre_bodoni.variable} ${inter.variable} font-sans`}>
         <Navbar />
         {children}
       </body>

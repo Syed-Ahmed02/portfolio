@@ -75,8 +75,6 @@ const config = {
             "backgroundPosition": "-200% 0"
           }
         }
-
-
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -84,6 +82,10 @@ const config = {
         shimmer: "shimmer 2s linear infinite"
 
       },
+      fontFamily:{
+        sans:['var(--font-inter)'],
+        bodnoi:['var(--font-libre-bodoni)'],
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
