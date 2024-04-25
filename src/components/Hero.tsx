@@ -1,8 +1,12 @@
-import { MoveRight, PhoneCall } from "lucide-react";
-import { Button } from "@/components/ui/button";
+"use client";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 export const Hero = () => (
-    <div className="w-full  py-20 lg:py-40">
+    <motion.div
+        initial={{ opacity: 0 }} // Start from fully transparent
+        animate={{ opacity: 1 }} // Animate to fully opaque
+        transition={{ duration: 0.5 }} // Transition duration
+        className="w-full  py-20 lg:py-40">
         <div className="container mx-auto">
             <div className="grid grid-cols-1 gap-8  lg:grid-cols-2">
                 <div className="flex gap-4 flex-col">
@@ -26,5 +30,5 @@ export const Hero = () => (
                 </div>
             </div>
         </div>
-    </div>
+    </motion.div>
 );

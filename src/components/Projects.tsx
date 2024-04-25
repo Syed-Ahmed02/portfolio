@@ -1,11 +1,15 @@
-
+"use client"
 import React from "react";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid"
 import { LayoutGrid } from "./ui/layout-grid";
-
+import { motion } from "framer-motion";
 export function Projects() {
     return (
-        <div className="">
+        <motion.div
+            initial={{ opacity: 0 }} // Start from fully transparent
+            animate={{ opacity: 1 }} // Animate to fully opaque
+            transition={{ duration: 0.5 }} // Transition duration
+        >
             <h4 className="text-center text-3xl md:text-5xl tracking-tighter  mb-4 font-regular">
                 My Work
             </h4>
@@ -13,7 +17,7 @@ export function Projects() {
             <div className="h-fit w-full">
                 <LayoutGrid cards={items} />
             </div>
-        </div>
+        </motion.div>
     );
 }
 const Skeleton = () => (
@@ -44,14 +48,14 @@ const items = [
         className: "md:col-span-1",
 
     }, {
-        id:4,
+        id: 4,
         title: "Project 4",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
         className: "md:col-span-1",
 
     }, {
-        id:5,
+        id: 5,
         title: "Project 5",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
@@ -59,7 +63,7 @@ const items = [
 
     },
     {
-        id:6,
+        id: 6,
         title: "Project 6",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         header: <Skeleton />,
@@ -67,7 +71,7 @@ const items = [
 
     },
     {
-        id:7,
+        id: 7,
         title: "Project 7",
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

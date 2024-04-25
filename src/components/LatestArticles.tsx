@@ -1,12 +1,18 @@
+"use client"
 import { MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 export const Blog = () => (
-    <div className="w-full py-20 lg:py-40">
+    <motion.div
+        initial={{ opacity: 0 }} // Start from fully transparent
+        animate={{ opacity: 1 }} // Animate to fully opaque
+        transition={{ duration: 0.5 }} // Transition duration
+        className="w-full py-20 lg:py-40">
         <div className="container mx-auto flex flex-col gap-14">
             <h4 className="text-3xl md:text-5xl tracking-tighter  font-regular text-center w-full">
                 Latest articles
             </h4>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div className="flex flex-col gap-2 hover:opacity-75 cursor-pointer">
                     <div className="bg-muted rounded-md aspect-video mb-4 "></div>
@@ -43,5 +49,5 @@ export const Blog = () => (
                 </Button>
             </div>
         </div>
-    </div>
+    </motion.div>
 );

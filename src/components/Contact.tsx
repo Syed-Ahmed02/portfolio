@@ -1,16 +1,20 @@
-
-
+"use client"
 import { Check, MoveRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-
+import { motion } from "framer-motion";
 export const Contact = () => {
 
 
     return (
-        <div className="w-full py-20 lg:py-40">
+
+        <motion.div
+            initial={{ opacity: 0 }} // Start from fully transparent
+            animate={{ opacity: 1 }} // Animate to fully opaque
+            transition={{ duration: 0.5 }} // Transition duration
+            className="w-full py-20 lg:py-40">
             <div className="container max-w-6xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-10">
                     <div className="flex flex-col gap-6">
@@ -72,12 +76,12 @@ export const Contact = () => {
                             <Button className="inline-flex h-12 animate-shimmer items-center justify-center rounded-md border  bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-primary transition-colors focus:outline-none focus:ring-2 ">
                                 Submit!<MoveRight className="w-4 h-4" />
                             </Button>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
