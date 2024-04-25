@@ -28,7 +28,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
     };
 
     return (
-        <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 relative">
+        <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 relative ">
             {cards.map((card, i) => (
                 <div key={i} className={cn(card.className, "")}>
                     <motion.div
@@ -37,15 +37,14 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
                             card.className,
                             "relative overflow-hidden",
                             selected?.id === card.id
-                                ? "rounded-lg cursor-pointer absolute inset-0 h-1/2 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col"
+                                ? "rounded-lg cursor-pointer absolute inset-0 h-1/4 w-full md:w-1/2 m-auto z-50 flex justify-center items-center flex-wrap flex-col mx-auto space-y-4 max-w-7xl border border-card-foreground "
                                 : lastSelected?.id === card.id
-                                    ? "z-40 bg-white rounded-xl h-full w-full"
+                                    ? "z-40 bg-white rounded-xl h-full "
                                     : "bg-white rounded-xl h-full w-full"
                         )}
                         layout
                     >
-                        {selected?.id === card.id && <SelectedCard selected={selected} />}
-                        <BentoCard card={card} />
+                        {selected?.id === card.id ? <SelectedCard selected={selected} /> : <BentoCard card={card} />}
 
                     </motion.div>
                 </div>
@@ -66,7 +65,7 @@ const BentoCard = ({ card }: { card: Card }) => {
     return (
         <div
             className={cn(
-                "row-span-1 rounded-xl  hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2]  bg-card border border-card-foreground justify-between flex flex-col space-y-4",
+                "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2]  bg-card border border-card-foreground justify-between flex flex-col space-y-4 max-w-4xl mx-auto md:auto-rows-[20rem]",
                 card.className
             )}
         >
@@ -86,7 +85,7 @@ const BentoCard = ({ card }: { card: Card }) => {
 
 const SelectedCard = ({ selected }: { selected: Card | null }) => {
     return (
-        <div className=" h-full w-full  justify-end rounded-lg shadow-2xl relative z-[60]">
+        <div className="bg-primary h-full w-full flex flex-col  rounded-lg shadow-2xl relative z-[60] text-center ">
             <motion.div
                 initial={{
                     opacity: 0,
@@ -94,34 +93,17 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
                 animate={{
                     opacity: 0.6,
                 }}
-                className="absolute inset-0 h-full w-full  bg-primary opacity-60 z-10 "
+                className="absolute inset-0 h-full w-full z-10 "
             />
+            
             {selected?.header}
-            {selected?.title}
-            <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 100,
-                }}
-                animate={{
-                    opacity: 1,
-                    y: 0,
-                }}
-                transition={{
-                    duration: 0.3,
-                    ease: "easeInOut",
-                }}
-                className="row-span-1 rounded-xl  hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2]  bg-card border border-card-foreground justify-between flex flex-col space-y-4 relative px-8 pb-4 z-[70]"
-            >
-                {selected?.header}
+            
+            <div className="font-sans font-bold text-black mb-2 mt-2 mx-auto">
                 {selected?.title}
-
-                <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
-                    {selected?.description}
-
-                </div>
-
-            </motion.div>
+            </div>
+            <div className="font-sans font-normal text-black text-xs mx-auto ">
+                {selected?.description}
+            </div>
         </div>
     );
 };

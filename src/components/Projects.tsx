@@ -10,7 +10,7 @@ export function Projects() {
                 My Work
             </h4>
 
-            <div className="h-screen py-20 w-full">
+            <div className="h-fit w-full">
                 <LayoutGrid cards={items} />
             </div>
         </div>
