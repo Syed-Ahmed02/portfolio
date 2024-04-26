@@ -7,8 +7,9 @@ export function Projects() {
     return (
         <motion.div
             initial={{ opacity: 0 }} // Start from fully transparent
-            animate={{ opacity: 1 }} // Animate to fully opaque
-            transition={{ duration: 0.5 }} // Transition duration
+            whileInView={{ opacity: 1 }} // Animate to fully opaque when in view
+            viewport={{ once: true }}
+            transition={{ duration: 2 }}
         >
             <h4 className="text-center text-3xl md:text-5xl tracking-tighter  mb-4 font-regular">
                 My Work

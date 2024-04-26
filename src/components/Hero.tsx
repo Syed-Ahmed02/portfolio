@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 export const Hero = () => (
     <motion.div
         initial={{ opacity: 0 }} // Start from fully transparent
-        animate={{ opacity: 1 }} // Animate to fully opaque
-        transition={{ duration: 0.5 }} // Transition duration
+        whileInView={{ opacity: 1 }} // Animate to fully opaque when in view
+        viewport={{ once: true }}
+        transition={{ duration: 1 }} 
         className="w-full  py-20 lg:py-40">
         <div className="container mx-auto">
             <div className="grid grid-cols-1 gap-8  lg:grid-cols-2">

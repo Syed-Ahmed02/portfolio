@@ -12,8 +12,9 @@ export const Contact = () => {
 
         <motion.div
             initial={{ opacity: 0 }} // Start from fully transparent
-            animate={{ opacity: 1 }} // Animate to fully opaque
-            transition={{ duration: 0.5 }} // Transition duration
+            whileInView={{ opacity: 1 }} // Animate to fully opaque when in view
+            viewport={{ once: true }}
+            transition={{ duration: 2 }}
             className="w-full py-20 lg:py-40">
             <div className="container max-w-6xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-10">
