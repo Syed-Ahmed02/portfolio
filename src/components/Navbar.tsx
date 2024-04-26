@@ -62,7 +62,7 @@ export const Navbar = () => {
                                         </>
                                     ) : (
                                         <>
-                                            <NavigationMenuTrigger className="font-medium text-sm">
+                                            <NavigationMenuTrigger className="font-medium text-sm bg-secondary">
                                                 {item.title}
                                             </NavigationMenuTrigger>
                                             <NavigationMenuContent className="!w-[450px] p-4">

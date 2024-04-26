@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { libre_bodoni,roboto_mono,inter} from "./fonts";
-import "./globals.css";
+import "../globals.css";
 import { Navbar } from "@/components/Navbar";
 import Image from "next/image";
 

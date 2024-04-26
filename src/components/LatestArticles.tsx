@@ -7,7 +7,7 @@ export const Blog = () => (
         initial={{ opacity: 0 }} // Start from fully transparent
         whileInView={{ opacity: 1 }} // Animate to fully opaque when in view
         viewport={{ once: true }}
-        transition={{ duration: 3 }} // Transition duration
+        transition={{ duration: 2 }} 
         className="w-full py-20 lg:py-40">
         <div className="container mx-auto flex flex-col gap-14">
             <h4 className="text-3xl md:text-5xl tracking-tighter  font-regular text-center w-full">
