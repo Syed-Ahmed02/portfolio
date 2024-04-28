@@ -8,7 +8,7 @@ export const Hero = () => (
                 <div className="flex gap-4 flex-col">
                     <div className="flex gap-4 flex-col">
                         <h1 className="text-5xl md:text-7xl max-w-lg tracking-tighter text-left font-bold">
-                            My Name is <span className="h-10">Syed Ahmed <Handdrawn_underline /></span>
+                            My Name is <span className="h-10"> <Handdrawn_underline /></span>
 
                         </h1>
                         <div className="text-xl leading-relaxed tracking-tight text-muted-foreground max-w-md text-left font-normal font-bodnoi">
