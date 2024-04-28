@@ -3,9 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils"
 import Image from "next/image";
-
+import { AnimatePresence } from "framer-motion";
 type Card = {
-    id: number;
+    id: string;
     className?: string;
     title?: string | React.ReactNode;
     description?: string | React.ReactNode;
@@ -26,8 +26,9 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
         setLastSelected(selected);
         setSelected(null);
     };
-
+    const [selectedId, setSelectedId] = useState<string | null>(null);
     return (
+
         <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 relative ">
             {cards.map((card, i) => (
                 <div key={i} className={cn(card.className, "")}>
@@ -58,6 +59,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
                 animate={{ opacity: selected?.id ? 0.3 : 0 }}
             />
         </div>
+
     );
 };
 
@@ -95,9 +97,9 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
                 }}
                 className="absolute inset-0 h-full w-full z-10 "
             />
-            
+
             {selected?.header}
-            
+
             <div className="font-sans font-bold text-black mb-2 mt-2 mx-auto">
                 {selected?.title}
             </div>
@@ -107,3 +109,25 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
         </div>
     );
 };
+/*
+        
+        */
+
+        /* <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 relative ">
+            {cards.map(item => (
+                <motion.div layoutId={item.id} onClick={() => setSelectedId(item.id)}>
+                    <motion.h5>{item.description}</motion.h5>
+                    <motion.h2>{item.title}</motion.h2>
+                </motion.div>
+            ))}
+
+            <AnimatePresence>
+                {selectedId && (
+                    <motion.div layoutId={selectedId}>
+                        <motion.h5>{cards[Number(selectedId)].description}</motion.h5>
+                        <motion.h2>{cards[Number(selectedId)].title}</motion.h2>
+                        <motion.button onClick={() => setSelectedId(null)} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>*/

@@ -11,7 +11,7 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 2 }}
         >
-            <h4 className="text-center text-3xl md:text-5xl tracking-tighter  mb-4 font-regular">
+            <h4 className="text-center text-3xl md:text-4xl tracking-tighter  mb-4 font-regular">
                 My Work
             </h4>
 

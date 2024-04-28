@@ -10,9 +10,9 @@ function Handdrawn_underline({
 
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={cn("", className)}
+            className={cn("w-[350px] ", className)}
             {...props}
-            viewBox="20 16 375 28" preserveAspectRatio="none">
+            viewBox="20 16 500 28" preserveAspectRatio="none">
             <path
                 fill="none"
                 stroke="hsl(197 71% 73%)"
