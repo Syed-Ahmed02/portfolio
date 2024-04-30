@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 type Card = {
-    id: string;
+    id: number;
     className?: string;
     title?: string | React.ReactNode;
     description?: string | React.ReactNode;
