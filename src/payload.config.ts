@@ -5,10 +5,12 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-
+import { seoPlugin } from '@payloadcms/plugin-seo';
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,7 +34,7 @@ export default buildConfig({
   plugins: [
     s3Storage({
       collections: {
-        'media':{
+        'media': {
           prefix: 'media',
         }
       },
@@ -43,9 +45,31 @@ export default buildConfig({
           secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
         },
         region: process.env.S3_REGION,
-        endpoint: process.env.S3_ENDPOINT,  
-        forcePathStyle:true,
+        endpoint: process.env.S3_ENDPOINT,
+        forcePathStyle: true,
       },
+    }),
+    seoPlugin({
+      collections: [
+        'pages',
+      ],
+      uploadsCollection: 'media',
+
+    }),
+    formBuilderPlugin({
+      fields: {
+        text: true,
+        textarea: true,
+        select: true,
+        email: true,
+        state: true,
+        country: true,
+        checkbox: true,
+        number: true,
+        message: true,
+        payment: false,
+      },
+
     }),
   ],
 })

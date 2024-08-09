@@ -1,11 +1,12 @@
-import { Button } from '@/components/ui/button'
+import { Main } from '@/components/craft'
+import HeroSimple from '@/components/sections/HeroSimple'
 import React from 'react'
 
 const Page = () => {
   return (
-    <div className='bg-black min-h-screen flex flex-row items-center justify-center'>
-        <Button variant="outline">Test button</Button>
-    </div>
+    <Main className='min-h-screen'>
+        <HeroSimple/>
+    </Main>
   )
 }
 
