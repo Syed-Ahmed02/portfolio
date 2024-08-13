@@ -7,7 +7,7 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-
+import HeroSimple from '@/components/sections/HeroSimple'
 export const hero: Field = {
   name: 'hero',
   type: 'group',
@@ -15,7 +15,7 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
+      defaultValue: 'heroWithImage',
       label: 'Type',
       options: [
         {
@@ -23,20 +23,21 @@ export const hero: Field = {
           value: 'none',
         },
         {
-          label: 'High Impact',
-          value: 'highImpact',
+          label: 'Hero with Background',
+          value: 'heroWithBackground',
         },
         {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
+          label: 'Hero with Image',
+          value: 'heroWithImage',
         },
         {
-          label: 'Low Impact',
-          value: 'lowImpact',
+          label: 'Hero with Text',
+          value: 'heroWithText',
         },
       ],
       required: true,
     },
+
     {
       name: 'richText',
       type: 'richText',
@@ -52,16 +53,25 @@ export const hero: Field = {
       }),
       label: false,
     },
-   
+    
     {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['heroWithImage', 'heroWithBackground'].includes(type),
       },
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'myCustomUIField', // required
+      type: 'ui', // required
+      admin: {
+        condition: (_, { type } = {}) => ['heroWithBackground'].includes(type),
+      },
+      
+    },
+   
   ],
   label: false,
 }

@@ -10,7 +10,19 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
+import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
+import { Page } from './collections/pages'
+import { Page as PageProps } from './payload-types'
 
+const generateTitle: GenerateTitle<PageProps> = ({ doc }) => {
+  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+}
+
+const generateURL: GenerateURL<PageProps> = ({ doc }) => {
+  return doc?.slug
+    ? `${process.env.NEXT_PUBLIC_SERVER_URL}/${doc.slug}`
+    : process.env.NEXT_PUBLIC_SERVER_URL || ''
+}
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,8 +30,12 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components:{
+      
+    }
   },
-  collections: [Users, Media],
+  collections: [Users, Media,Page],
+  
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -54,6 +70,8 @@ export default buildConfig({
         'pages',
       ],
       uploadsCollection: 'media',
+      generateTitle,
+      generateURL,
 
     }),
     formBuilderPlugin({
