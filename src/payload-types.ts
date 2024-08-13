@@ -90,34 +90,41 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
-  hero: {
-    type: 'none' | 'heroWithBackground' | 'heroWithImage' | 'heroWithText';
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    media?: number | Media | null;
-  };
+  layout: HeroSimpleBlock[];
+  publishedAt?: string | null;
+  slug?: string | null;
   meta?: {
     title?: string | null;
     description?: string | null;
     image?: number | Media | null;
   };
-  publishedAt?: string | null;
-  slug?: string | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroSimpleBlock".
+ */
+export interface HeroSimpleBlock {
+  richText: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  media?: number | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero-simple';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

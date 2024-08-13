@@ -31,6 +31,7 @@
     "payload": "beta",
     "react": "^19.0.0-rc-6230622a1a-20240610",
     "react-dom": "^19.0.0-rc-6230622a1a-20240610",
+    "server": "^1.0.39",
     "sharp": "0.32.6",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
