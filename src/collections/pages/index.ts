@@ -1,13 +1,6 @@
 import type { CollectionConfig } from 'payload'
-import {
-  MetaDescriptionField,
-  MetaImageField,
-  MetaTitleField,
-  OverviewField,
-  PreviewField,
-} from '@payloadcms/plugin-seo/fields'
 import { slugField } from '@/fields/slug'
-import { HeroSimpleBlock } from '@/blocks/heroSimple'
+import { HeroSimpleBlock } from '@/blocks/Hero/heroSimple'
 export const Page: CollectionConfig = {
   slug: 'pages',
   fields: [

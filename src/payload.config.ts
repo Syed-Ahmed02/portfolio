@@ -13,6 +13,7 @@ import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { Page } from './collections/pages'
 import { Page as PageProps } from './payload-types'
+import { Posts } from './collections/Posts'
 
 const generateTitle: GenerateTitle<PageProps> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
@@ -34,7 +35,7 @@ export default buildConfig({
       
     }
   },
-  collections: [Users, Media,Page],
+  collections: [Users, Media,Page,Posts],
   
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -67,7 +68,7 @@ export default buildConfig({
     }),
     seoPlugin({
       collections: [
-        'pages',
+        'pages','posts'
       ],
       uploadsCollection: 'media',
       generateTitle,

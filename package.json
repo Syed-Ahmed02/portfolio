@@ -29,6 +29,7 @@
     "lucide-react": "^0.427.0",
     "next": "15.0.0-canary.53",
     "payload": "beta",
+    "prism-react-renderer": "^2.3.1",
     "react": "^19.0.0-rc-6230622a1a-20240610",
     "react-dom": "^19.0.0-rc-6230622a1a-20240610",
     "server": "^1.0.39",

@@ -5,7 +5,7 @@ import Image from "next/image";
 // UI component imports
 import { Section, Container } from "@/components/craft";
 import { Button } from "@/components/ui/button";
-import RichText from "../RichText";
+import RichText from "@/components/RichText";
 // Asset imports
 import type { HeroSimpleBlock } from "@/payload-types";
 interface HeroSimpeProps {

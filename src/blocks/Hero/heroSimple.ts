@@ -5,7 +5,9 @@ import {
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  BlocksFeature
 } from '@payloadcms/richtext-lexical'
+import { Code } from '../Code'
 
 export const HeroSimpleBlock: Block = {
   slug: 'hero-simple',
@@ -20,6 +22,7 @@ export const HeroSimpleBlock: Block = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
+            BlocksFeature({ blocks: [ Code] }),
           ]
         },
       }),
