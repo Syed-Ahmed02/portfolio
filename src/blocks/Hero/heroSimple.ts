@@ -28,13 +28,21 @@ export const HeroSimpleBlock: Block = {
       }),
       label: false,
       required:true,
-    },    
+    },
+    {
+      name:'Buttons',
+      type:'relationship',
+      relationTo:'buttons',
+      hasMany:true,
+      maxRows:2,
+    },
     {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
       required: false,
     },
+
 
   ],
   interfaceName: 'HeroSimpleBlock',

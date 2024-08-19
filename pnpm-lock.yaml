@@ -24,6 +24,9 @@ importers:
       '@payloadcms/plugin-form-builder':
         specifier: 3.0.0-beta.77
         version: 3.0.0-beta.77(monaco-editor@0.38.0)(next@15.0.0-canary.53(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(sass@1.77.4))(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.0)
+      '@payloadcms/plugin-redirects':
+        specifier: 3.0.0-beta.77
+        version: 3.0.0-beta.77(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))
       '@payloadcms/plugin-seo':
         specifier: 3.0.0-beta.77
         version: 3.0.0-beta.77(@payloadcms/translations@3.0.0-beta.77)(@payloadcms/ui@3.0.0-beta.77(monaco-editor@0.38.0)(next@15.0.0-canary.53(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(sass@1.77.4))(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.0))(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)
@@ -1140,6 +1143,11 @@ packages:
       payload: 3.0.0-beta.77
       react: ^19.0.0 || ^19.0.0-rc-06d0b89e-20240801
       react-dom: ^19.0.0 || ^19.0.0-rc-06d0b89e-20240801
+
+  '@payloadcms/plugin-redirects@3.0.0-beta.77':
+    resolution: {integrity: sha512-bTUbAO8BAxCZfzinIzzHoJgOUCFWHiIUTscqjQOldtB2Z+x9C8A7WQSO/BNrkoRcNYWx1vBwOgenp5PiL0SZ9g==}
+    peerDependencies:
+      payload: 3.0.0-beta.77
 
   '@payloadcms/plugin-seo@3.0.0-beta.77':
     resolution: {integrity: sha512-pa6vFGcB2KalN8+UzNYXqSztqeHBt9e8SrIpCPabMb0o+nfBz7Ghqkuaaq1nd4aNLUQ/RAPoU0XQwuDAPhiR4A==}
@@ -6247,6 +6255,10 @@ snapshots:
       - monaco-editor
       - next
       - supports-color
+
+  '@payloadcms/plugin-redirects@3.0.0-beta.77(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))':
+    dependencies:
+      payload: 3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4)
 
   '@payloadcms/plugin-seo@3.0.0-beta.77(@payloadcms/translations@3.0.0-beta.77)(@payloadcms/ui@3.0.0-beta.77(monaco-editor@0.38.0)(next@15.0.0-canary.53(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(sass@1.77.4))(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)(types-react@19.0.0-rc.0))(payload@3.0.0-beta.77(@swc/core@1.7.6(@swc/helpers@0.5.11))(@swc/types@0.1.12)(graphql@16.9.0)(typescript@5.5.4))(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-fb9a90fa48-20240614))(react@19.0.0-rc-fb9a90fa48-20240614)':
     dependencies:

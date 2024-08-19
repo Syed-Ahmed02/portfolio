@@ -15,6 +15,8 @@ export interface Config {
     media: Media;
     pages: Page;
     posts: Post;
+    buttons: Button;
+    redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
     'payload-preferences': PayloadPreference;
@@ -71,6 +73,21 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
+  caption?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   prefix?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -122,10 +139,24 @@ export interface HeroSimpleBlock {
     };
     [k: string]: unknown;
   };
+  Buttons?: (number | Button)[] | null;
   media?: number | Media | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero-simple';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "buttons".
+ */
+export interface Button {
+  id: number;
+  text: string;
+  link: string;
+  variant: 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'default';
+  openInNewTab?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -158,6 +189,29 @@ export interface Post {
     title?: string | null;
     description?: string | null;
     image?: number | Media | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  from: string;
+  to?: {
+    type?: ('reference' | 'custom') | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'buttons';
+          value: number | Button;
+        } | null);
+    url?: string | null;
   };
   updatedAt: string;
   createdAt: string;

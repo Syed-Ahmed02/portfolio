@@ -14,7 +14,8 @@ import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { Page } from './collections/pages'
 import { Page as PageProps } from './payload-types'
 import { Posts } from './collections/Posts'
-
+import { redirectsPlugin } from '@payloadcms/plugin-redirects'
+import { Buttons } from './collections/buttons'
 const generateTitle: GenerateTitle<PageProps> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
 }
@@ -35,7 +36,7 @@ export default buildConfig({
       
     }
   },
-  collections: [Users, Media,Page,Posts],
+  collections: [Users, Media,Page,Posts,Buttons],
   
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -65,6 +66,9 @@ export default buildConfig({
         endpoint: process.env.S3_ENDPOINT,
         forcePathStyle: true,
       },
+    }),
+    redirectsPlugin({
+      collections: ['pages','buttons'],
     }),
     seoPlugin({
       collections: [
