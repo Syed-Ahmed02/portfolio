@@ -13,10 +13,11 @@ type Args = {
     [key: string]: string | string[]
   }
 }
+import { importMap } from "../importMap.js"
 
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   generatePageMetadata({ config, params, searchParams })
-
-const Page = ({ params, searchParams }: Args) => RootPage({ config, params, searchParams })
+const Page = ({ params, searchParams }: Args) =>
+  RootPage({ config, importMap, params, searchParams })
 
 export default Page

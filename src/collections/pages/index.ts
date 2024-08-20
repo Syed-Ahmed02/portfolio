@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { slugField } from '@/fields/slug'
 import { HeroSimpleBlock } from '@/blocks/Hero/heroSimple'
+import {ArchiveBlock } from '@/blocks/Archive'
 export const Page: CollectionConfig = {
   slug: 'pages',
   fields: [
@@ -12,7 +13,7 @@ export const Page: CollectionConfig = {
     {
       name: 'layout',
       type: 'blocks',
-      blocks: [HeroSimpleBlock],
+      blocks: [HeroSimpleBlock,ArchiveBlock],
       required: true,
     },
 

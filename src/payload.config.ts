@@ -16,6 +16,7 @@ import { Page as PageProps } from './payload-types'
 import { Posts } from './collections/Posts'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { Buttons } from './collections/buttons'
+import { Tags } from './collections/Tags'
 const generateTitle: GenerateTitle<PageProps> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
 }
@@ -36,7 +37,7 @@ export default buildConfig({
       
     }
   },
-  collections: [Users, Media,Page,Posts,Buttons],
+  collections: [Users, Media,Page,Posts,Buttons,Tags],
   
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

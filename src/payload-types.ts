@@ -16,6 +16,7 @@ export interface Config {
     pages: Page;
     posts: Post;
     buttons: Button;
+    tags: Tag;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -108,7 +109,7 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
-  layout: HeroSimpleBlock[];
+  layout: (HeroSimpleBlock | ArchiveBlock)[];
   publishedAt?: string | null;
   slug?: string | null;
   meta?: {
@@ -155,6 +156,67 @@ export interface Button {
   link: string;
   variant: 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'default';
   openInNewTab?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArchiveBlock".
+ */
+export interface ArchiveBlock {
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  type: 'Posts' | 'Other';
+  content?:
+    | {
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        Media: number | Media;
+        Tags?: (number | Tag)[] | null;
+        id?: string | null;
+      }[]
+    | null;
+  Buttons?: (number | Button)[] | null;
+  media?: number | Media | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'archive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: number;
+  tag: string;
+  variant: 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'default';
+  colour: 'primary' | 'secondary' | 'accent' | 'foreground';
   updatedAt: string;
   createdAt: string;
 }
