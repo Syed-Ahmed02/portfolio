@@ -39,9 +39,7 @@ export const Posts: CollectionConfig = {
         },
         {
             name: 'content',
-            
             required: true,
-           
             type: 'richText',
             editor: lexicalEditor({
                 features: ({ rootFeatures }) => {
@@ -54,6 +52,12 @@ export const Posts: CollectionConfig = {
                     ]
                 },
             }),
+        },
+        {
+            name: "tag",
+            type: "relationship",
+            relationTo: "tags",
+            hasMany: true,
         },
         {
             name: 'publishedAt',

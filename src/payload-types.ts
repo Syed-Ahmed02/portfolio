@@ -164,6 +164,7 @@ export interface Button {
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
+  title: string;
   introContent?: {
     root: {
       type: string;
@@ -197,13 +198,22 @@ export interface ArchiveBlock {
           };
           [k: string]: unknown;
         };
-        Media: number | Media;
         Tags?: (number | Tag)[] | null;
+        LinkTo?: string | null;
         id?: string | null;
       }[]
     | null;
-  Buttons?: (number | Button)[] | null;
-  media?: number | Media | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'posts' | null;
+  tags?: (number | Tag)[] | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }[]
+    | null;
+  Media: number | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'archive';
@@ -245,6 +255,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
+  tag?: (number | Tag)[] | null;
   publishedAt?: string | null;
   slug?: string | null;
   meta?: {

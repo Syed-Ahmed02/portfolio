@@ -12,6 +12,12 @@ export const ArchiveBlock: Block = {
     slug: 'archive',
     fields: [
         {
+            name: "title",
+            label: "Title",
+            type: "text",
+            required: true
+        },
+        {
             name: "introContent",
             type: "richText",
             label: "Intro Content",
@@ -31,7 +37,7 @@ export const ArchiveBlock: Block = {
             label: 'Type',
             type: 'select',
             options: ["Posts", "Other"],
-            defaultValue:"Posts",
+            defaultValue: "Posts",
             required: true
         },
         {
@@ -58,35 +64,95 @@ export const ArchiveBlock: Block = {
                     }),
                     required: true
                 },
-                {
-                    name: "Media",
-                    type: "relationship",
-                    relationTo: "media",
-                    required: true,
-                },
+
                 {
                     name: "Tags",
                     type: "relationship",
                     relationTo: "tags",
                     hasMany: true
+                },
+                {
+                    name: "LinkTo",
+                    type: "text",
+                    label: "Link To",
+                    required: false
                 }
+
             ]
         },
         {
-            name: 'Buttons',
-            type: 'relationship',
-            relationTo: 'buttons',
-            hasMany: true,
-            maxRows: 2,
+            name: 'populateBy',
+            type: 'select',
+            defaultValue: 'collection',
+            admin: {
+                condition: (_, siblingData) => siblingData.type === 'Posts',
+            },
+            options: [
+                {   
+                    label: 'Collection',
+                    value: 'collection',
+                },
+                {
+                    label: 'Individual Selection',
+                    value: 'selection',
+                },
+            ],
         },
         {
-            name: 'media',
-            type: 'upload',
-            relationTo: 'media',
-            required: false,
+            name: 'relationTo',
+            type: 'select',
+            admin: {
+                condition: (_, siblingData) => siblingData.populateBy === 'collection',
+            },
+            defaultValue: 'posts',
+            label: 'Collections To Show',
+            options: [
+                {
+                    label: 'Posts',
+                    value: 'posts',
+                },
+            ],
         },
-
-
+        {
+            name: 'tags',
+            type: 'relationship',
+            admin: {
+                condition: (_, siblingData) => siblingData.populateBy === 'collection',
+            },
+            hasMany: true,
+            label: 'Tags to filter by',
+            relationTo: 'tags',
+        },
+        {
+            name: 'limit',
+            type: 'number',
+            admin: {
+                condition: (_, siblingData) => siblingData.populateBy === 'collection',
+                step: 1,
+            },
+            defaultValue: 10,
+            label: 'Limit',
+        },
+        {
+            name: 'selectedDocs',
+            type: 'relationship',
+            admin: {
+                condition: (_, siblingData) => siblingData.populateBy === 'selection',
+            },
+            hasMany: true,
+            label: 'Selection',
+            relationTo: ['posts'],
+        },
+        {
+            name: "Media",
+            type: "relationship",
+            relationTo: "media",
+            required: true,
+        },
     ],
+
+
+
+
     interfaceName: 'ArchiveBlock',
 }

@@ -6,7 +6,8 @@ export const Tags: CollectionConfig = {
     read: () => true,
   },
   admin:{
-    hidden:true
+    hidden:true,
+    useAsTitle: 'tag',
   },
   fields: [
     {
