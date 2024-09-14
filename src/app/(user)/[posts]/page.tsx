@@ -2,8 +2,10 @@ import React from 'react'
 import { MagicCard } from '@/components/magicui/magic-card'
 const posts = () => {
   return (
-    <div>
-        <MagicCard/>
+    <div className='bg-black'>
+        <MagicCard>
+          TESTESTEST
+          </MagicCard>
 
 
     </div>
