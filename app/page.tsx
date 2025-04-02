@@ -2,7 +2,7 @@ import Hero from "@/components/hero"
 import Experience from "@/components/experience"
 import BlogCarousel from "@/components/blog-carousel"
 import ContactForm from "@/components/contact-form"
-import { Gallery6 } from "@/components/gallery6"
+import { BlogGallery } from "@/components/BlogGallery"
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <div className="text-foreground">
         <Hero />
         <Experience />
-        <Gallery6/>
+        <BlogGallery/>
         <ContactForm />
       </div>
     </main>

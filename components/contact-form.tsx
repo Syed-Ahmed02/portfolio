@@ -3,21 +3,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import Calendar from "./cal-embed"
 
 export default function ContactForm() {
   return (
-    <section className="container px-4 py-16 md:py-24">
+    <section className="container px-4 py-16 md:py-24 bg-background">
       <div className="mb-8 flex flex-col items-center">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Get in Touch</h2>
         <p className="mt-4 text-center text-muted-foreground">
-          Have a question or want to work together? Drop me a message!
+          Have a question or want to work together? Drop me a or book a call!
         </p>
       </div>
 
       <Card className="mx-auto max-w-lg overflow-hidden border-muted/20 bg-card">
         <CardHeader className="px-6 pt-6">
           <CardTitle>Contact Me</CardTitle>
-          <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
+          <CardDescription>Fill out the form below or book a short meeting and ill get back to you!</CardDescription>
         </CardHeader>
         <CardContent className="px-6 pb-6">
           <form className="space-y-4">
@@ -47,8 +48,13 @@ export default function ContactForm() {
               Send Message
             </Button>
           </form>
+          <div className="w-full my-4">
+            <Calendar />
+          </div>
         </CardContent>
+
       </Card>
+
     </section>
   )
 }

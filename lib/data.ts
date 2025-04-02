@@ -74,36 +74,42 @@ export const blogPosts = [
     date: "March 15, 2025",
     excerpt: "Exploring the upcoming features in React and how they will change the way we build web applications.",
     image: "/placeholder.svg?height=200&width=400&text=React+Future",
+    category: "React"
   },
   {
     title: "Mastering Tailwind CSS: Tips and Tricks",
     date: "February 28, 2025",
     excerpt: "Learn how to leverage Tailwind CSS to build beautiful, responsive interfaces with less effort.",
     image: "/placeholder.svg?height=200&width=400&text=Tailwind+CSS",
+    category: "CSS"
   },
   {
     title: "Building Accessible Web Applications",
     date: "February 10, 2025",
     excerpt: "A comprehensive guide to making your web applications accessible to all users.",
     image: "/placeholder.svg?height=200&width=400&text=Accessibility",
+    category: "Accessibility"
   },
   {
     title: "State Management in 2025: Beyond Redux",
     date: "January 25, 2025",
     excerpt: "Exploring modern state management solutions and when to use each one.",
     image: "/placeholder.svg?height=200&width=400&text=State+Management",
+    category: "React"
   },
   {
     title: "The Power of Server Components in Next.js",
     date: "January 12, 2025",
     excerpt: "How Server Components are changing the game for Next.js developers.",
     image: "/placeholder.svg?height=200&width=400&text=Server+Components",
+    category: "Next.js"
   },
   {
     title: "Optimizing Performance in React Applications",
     date: "December 30, 2024",
     excerpt: "Practical strategies to improve the performance of your React applications.",
     image: "/placeholder.svg?height=200&width=400&text=Performance",
+    category: "Performance"
   },
 ]
 
