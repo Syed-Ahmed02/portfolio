@@ -12,7 +12,7 @@ import type { CollectionConfig } from 'payload'
 export const Experiences: CollectionConfig = {
   slug: 'experience',
   admin: {
-    useAsTitle: 'Experience',
+    useAsTitle: 'title',
   },
   fields: [
     {
@@ -34,14 +34,14 @@ export const Experiences: CollectionConfig = {
         maxLength:500,
         required:true,
     },
-    // {
-    //     name:"skills",
-    //     label:"Skills"
-    //     type:"relationship",
-    //     relationTo:"tags",
-    //     hasMany:true,
-    //     required:false,
-    // },
+    {
+        name:"skills",
+        label:"Skills",
+        type:"relationship",
+        relationTo:"tags",
+        hasMany:true,
+        required:false,
+    },
     {
         name:"image",
         type:"upload",
