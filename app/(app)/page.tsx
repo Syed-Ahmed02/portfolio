@@ -6,7 +6,7 @@ import { BlogGallery } from "@/components/BlogGallery"
 
 export default function Home() {
   return (
-    <main className="dark min-h-screen ">
+    <main className="dark min-h-screen">
       <div className="text-foreground">
         <Hero />
         <Experience />

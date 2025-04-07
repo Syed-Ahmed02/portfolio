@@ -17,7 +17,7 @@ export default function Experience() {
   }, [activeTab])
 
   return (
-    <section className="container px-4 py-16 md:py-24 bg-background">
+    <section className="px-4 py-16 md:py-24 bg-background ">
       <BlurFade delay={0.3} inView>
         <div className="mb-8 flex flex-col items-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Experience</h2>

@@ -7,7 +7,7 @@ import Calendar from "./cal-embed"
 
 export default function ContactForm() {
   return (
-    <section className="container px-4 py-16 md:py-24 bg-background">
+    <section className="px-4 py-16 md:py-24 bg-background">
       <div className="mb-8 flex flex-col items-center">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Get in Touch</h2>
         <p className="mt-4 text-center text-muted-foreground">
