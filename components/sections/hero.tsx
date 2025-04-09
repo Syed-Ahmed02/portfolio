@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { GridPattern } from "./ui/grid-pattern"
-import { TextShimmer } from "./ui/text-shimmer"
-import { BlurFade } from "./ui/blur-fade"
+import { GridPattern } from "../ui/grid-pattern"
+import { TextShimmer } from "../ui/text-shimmer"
+import { BlurFade } from "../ui/blur-fade"
 
 export default function Hero() {
   return (

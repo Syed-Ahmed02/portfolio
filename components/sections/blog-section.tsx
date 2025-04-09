@@ -10,7 +10,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { BlurFade } from "./ui/blur-fade";
+import { BlurFade } from "../ui/blur-fade";
 import { Post } from "@/payload-types";
 import Link from "next/link";
 import Image from "next/image";

@@ -10,10 +10,10 @@
     "lint": "next lint",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=./payload.config.ts NODE_OPTIONS=\"--import tsx\" payload generate:types",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap"
-
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.2",
+    "@hookform/resolvers": "^5.0.1",
     "@payloadcms/db-postgres": "^3.33.0",
     "@payloadcms/next": "^3.33.0",
     "@payloadcms/payload-cloud": "^3.33.0",
@@ -35,10 +35,14 @@
     "payload": "^3.33.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.55.0",
+    "resend": "^4.2.0",
     "sharp": "^0.34.0",
+    "sonner": "^2.0.3",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
-    "tw-animate-css": "^1.2.5"
+    "tw-animate-css": "^1.2.5",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

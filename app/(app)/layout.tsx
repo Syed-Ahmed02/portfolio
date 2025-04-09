@@ -1,9 +1,9 @@
 import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import { NavigationMenu } from "@/components/ui/navigation-menu"
-import { Navbar } from "@/components/navbar"
+import { ThemeProvider } from "@/components/ui/theme-provider"
+import { Navbar } from "@/components/sections/navbar"
+import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,6 +25,7 @@ export default function RootLayout({
             <Navbar />
           </div>
           {children}
+          <Toaster  richColors/>
         </ThemeProvider>
       </body>
     </html>

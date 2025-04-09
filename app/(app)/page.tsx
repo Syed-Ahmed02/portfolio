@@ -1,8 +1,7 @@
-import Hero from "@/components/hero"
-import {Experience} from "@/components/experience"
-import BlogCarousel from "@/components/blog-carousel"
-import ContactForm from "@/components/contact-form"
-import { BlogGallery } from "@/components/BlogGallery"
+import Hero from "@/components/sections/hero"
+import { Experience } from "@/components/sections/experience-section"
+import ContactForm from "@/components/sections/contact-section"
+import { BlogGallery } from "@/components/sections/blog-section"
 import { fetchExperienceData, fetchPostsData } from "@/lib/api"
 
 export default async function Home() {
