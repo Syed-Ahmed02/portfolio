@@ -166,6 +166,7 @@ export interface Experience {
   title: string;
   period?: string | null;
   description: string;
+  type: 'Project' | 'Work Experience' | 'Volunteer';
   skills?: (number | Tag)[] | null;
   image: number | Media;
   link?: string | null;
@@ -179,7 +180,8 @@ export interface Experience {
 export interface Post {
   id: number;
   title: string;
-  heroImage?: (number | null) | Media;
+  description: string;
+  heroImage: number | Media;
   content: {
     root: {
       type: string;
@@ -431,6 +433,7 @@ export interface ExperienceSelect<T extends boolean = true> {
   title?: T;
   period?: T;
   description?: T;
+  type?: T;
   skills?: T;
   image?: T;
   link?: T;
@@ -443,6 +446,7 @@ export interface ExperienceSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
+  description?: T;
   heroImage?: T;
   content?: T;
   relatedPosts?: T;

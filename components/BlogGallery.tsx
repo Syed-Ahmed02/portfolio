@@ -11,6 +11,9 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { BlurFade } from "./ui/blur-fade";
+import { Post } from "@/payload-types";
+import Link from "next/link";
+import Image from "next/image";
 
 interface GalleryItem {
   id: string;
@@ -20,57 +23,11 @@ interface GalleryItem {
   image: string;
 }
 
-interface Gallery6Props {
-  heading?: string;
-  demoUrl?: string;
-  items?: GalleryItem[];
+interface GalleryProps {
+  posts: Post[]
 }
 
-const BlogGallery = ({
-  heading = "Latest Blog Posts",
-  items = [
-    {
-      id: "item-1",
-      title: "Build Modern UIs",
-      summary:
-        "Create stunning user interfaces with our comprehensive design system.",
-      url: "#",
-      image: "/images/block/placeholder-dark-1.svg",
-    },
-    {
-      id: "item-2",
-      title: "Computer Vision Technology",
-      summary:
-        "Powerful image recognition and processing capabilities that allow AI systems to analyze, understand, and interpret visual information from the world.",
-      url: "#",
-      image: "/images/block/placeholder-dark-1.svg",
-    },
-    {
-      id: "item-3",
-      title: "Machine Learning Automation",
-      summary:
-        "Self-improving algorithms that learn from data patterns to automate complex tasks and make intelligent decisions with minimal human intervention.",
-      url: "#",
-      image: "/images/block/placeholder-dark-1.svg",
-    },
-    {
-      id: "item-4",
-      title: "Predictive Analytics",
-      summary:
-        "Advanced forecasting capabilities that analyze historical data to predict future trends and outcomes, helping businesses make data-driven decisions.",
-      url: "#",
-      image: "/images/block/placeholder-dark-1.svg",
-    },
-    {
-      id: "item-5",
-      title: "Neural Network Architecture",
-      summary:
-        "Sophisticated AI models inspired by human brain structure, capable of solving complex problems through deep learning and pattern recognition.",
-      url: "#",
-      image: "/images/block/placeholder-dark-1.svg",
-    },
-  ],
-}: Gallery6Props) => {
+export const BlogGallery: React.FC<GalleryProps>= ({posts}) => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -96,8 +53,15 @@ const BlogGallery = ({
             <div className="mb-8 flex flex-col justify-between md:mb-14 md:flex-row md:items-end lg:mb-16">
               <div>
                 <h2 className="mb-3 text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
-                  {heading}
+                  View Latests Posts
                 </h2>
+                <Link
+                  href="/posts"
+                  className="group flex items-center gap-1 text-sm font-medium md:text-base lg:text-lg"
+                >
+                  Book a demo
+                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
               <div className="mt-8 flex shrink-0 items-center justify-start gap-2">
                 <Button
@@ -138,38 +102,50 @@ const BlogGallery = ({
               className="relative"
             >
               <CarouselContent className="-mr-4  ml-8 2xl:ml-[max(8rem,calc(50vw-700px+1rem))] 2xl:mr-[max(0rem,calc(50vw-700px-1rem))]">
-                {items.map((item) => (
-                  <CarouselItem key={item.id} className="pl-4 md:max-w-[452px]  border py-8">
-                    <a
-                      href={item.url}
-                      className="group flex flex-col justify-between"
-                    >
-                      <div>
-                        <div className="flex aspect-[3/2] overflow-clip rounded-xl">
-                          <div className="flex-1">
-                            <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
-                              <img
-                                src={item.image}
+                {posts.length > 0 ? (posts.map((item) => {
+                  console.log("Blog Item:", item);
+                  console.log("Hero Image Data:", item.heroImage);
+                  return (
+                    <CarouselItem key={item.id} className="pl-4 md:max-w-[452px]  border py-8">
+                      <Link
+                        href={`/blog/${item.title}`}
+                        className="group flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex aspect-[3/2] overflow-clip rounded-xl">
+                            <div className="flex-1">
+                              <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
+                              <Image
+                                src={
+                                  typeof item.heroImage === 'object' && item.heroImage.url
+                                    ? item.heroImage.url
+                                    : `/placeholder.svg?height=300&width=300&text=${encodeURIComponent(item.title.split(" ")[0])}`
+                                }
                                 alt={item.title}
-                                className="h-full w-full object-cover object-center"
+                                width={300}
+                                height={300}
+                                className="object-cover"
                               />
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
-                        {item.title}
-                      </div>
-                      <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
-                        {item.summary}
-                      </div>
-                      <div className="flex items-center text-sm">
-                        Read more{" "}
-                        <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </a>
-                  </CarouselItem>
-                ))}
+                        <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+                          {item.title}
+                        </div>
+                        <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9 break-words">
+                          {item.description}
+                        </div>
+                        <div className="flex items-center text-sm">
+                          Read more{" "}
+                          <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                        </div>
+                      </Link>
+                    </CarouselItem>
+                  );
+                })):(
+                  <p className="text-center text-lg">No Data Avaliable</p>
+                )}
               </CarouselContent>
             </Carousel>
           </div>
@@ -179,4 +155,3 @@ const BlogGallery = ({
   );
 };
 
-export { BlogGallery };

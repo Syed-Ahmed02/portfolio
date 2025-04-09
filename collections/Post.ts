@@ -41,15 +41,26 @@ export const Posts: CollectionConfig = {
         required: true,
       },
       {
+        name:"description",
+        type:"text",
+        label:"Short Description of Blog Post",
+        maxLength:200,
+        required:true
+      },
+      {
         type:"tabs",
         tabs:[
             {
               fields: [
                 {
-                  name: 'heroImage',
-                  type: 'upload',
-                  relationTo: 'media',
-                },
+                  name:"heroImage",
+                  type:"upload",
+                  relationTo:"media",
+                  filterOptions:{
+                      mimeType: {contains:'image'}
+                  },
+                  required:true,
+              },
                 {
                   name: 'content',
                   type: 'richText',

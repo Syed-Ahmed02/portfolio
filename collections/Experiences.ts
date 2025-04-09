@@ -35,6 +35,13 @@ export const Experiences: CollectionConfig = {
         required:true,
     },
     {
+      name:"type",
+      label:"Type",
+      type:"select",
+      options:["Project","Work Experience","Volunteer"],
+      required:true,
+    },
+    {
         name:"skills",
         label:"Skills",
         type:"relationship",

@@ -15,7 +15,7 @@ export default async function Home() {
       <div className="text-foreground">
         <Hero />
         <Experience experiences={experienceData} />
-        <BlogGallery/>
+        <BlogGallery posts={blogData}/>
         <ContactForm />
       </div>
     </main>

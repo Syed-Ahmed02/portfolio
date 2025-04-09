@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import { BlurFade } from "./ui/blur-fade"
 import { Experience as ExperienceProps } from "@/payload-types"
-
+import { ExternalLink } from "lucide-react"
+import Link from "next/link"
 interface ExperienceComponentProps {
   experiences: ExperienceProps[]
 }
@@ -17,8 +18,17 @@ export const Experience: React.FC<ExperienceComponentProps> = ({ experiences }) 
   const [displayData, setDisplayData] = useState<ExperienceProps[]>([])
 
   useEffect(() => {
-    // Filter experiences based on the active tab
-    setDisplayData(experiences)
+    // Filter experiences based on the active tab and type field
+    if (activeTab === "work") {
+      setDisplayData(experiences.filter(exp => exp.type === "Work Experience"))
+    } else if (activeTab === "projects") {
+      setDisplayData(experiences.filter(exp => exp.type === "Project"))
+    } else if (activeTab==="volunteer"){
+      setDisplayData(experiences.filter(exp=> exp.type ==="Volunteer" ))
+    }
+    else {
+      setDisplayData(experiences)
+    }
   }, [activeTab, experiences])
 
   return (
@@ -29,16 +39,19 @@ export const Experience: React.FC<ExperienceComponentProps> = ({ experiences }) 
           <p className="mt-4 text-center text-muted-foreground">My professional journey and notable projects</p>
           <div className="mt-8 flex gap-4">
             <Button variant={activeTab === "work" ? "default" : "outline"} onClick={() => setActiveTab("work")}>
-              Work
+              Work Experience
             </Button>
             <Button variant={activeTab === "projects" ? "default" : "outline"} onClick={() => setActiveTab("projects")}>
               Projects
+            </Button>
+            <Button variant={activeTab === "volunteer" ? "default" : "outline"} onClick={() => setActiveTab("volunteer")}>
+              Volunteer Experience
             </Button>
           </div>
         </div>
       </BlurFade>
       <div className="mx-auto max-w-3xl space-y-6">
-        {displayData.map((item, index) => (
+        {displayData.length > 0 ? (displayData.map((item, index) => (
           <BlurFade delay={0.1 * index + 0.2} inView key={index}>
             <Card className="w-full overflow-hidden border-muted/20 bg-card">
               <div className="md:flex">
@@ -50,7 +63,8 @@ export const Experience: React.FC<ExperienceComponentProps> = ({ experiences }) 
                         : `/placeholder.svg?height=300&width=300&text=${encodeURIComponent(item.title.split(" ")[0])}`
                     }
                     alt={item.title}
-                    fill
+                    width={300}
+                    height={300}
                     className="object-cover"
                   />
                 </div>
@@ -60,7 +74,7 @@ export const Experience: React.FC<ExperienceComponentProps> = ({ experiences }) 
                     <CardDescription>{item.period}</CardDescription>
                   </CardHeader>
                   <CardContent className="px-6 pb-6">
-                    <p className="mb-4 text-muted-foreground">{item.description}</p>
+                    <p className="mb-4 text-muted-foreground break-words">{item.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {item.skills &&
                         item.skills.map((skill, i) => (
@@ -70,11 +84,24 @@ export const Experience: React.FC<ExperienceComponentProps> = ({ experiences }) 
                         ))}
                     </div>
                   </CardContent>
+                  {item.link &&
+                  <CardFooter>
+                    <Link href={item.link} className="w-full" target="_blank">
+                      <Button className="w-full" variant={"outline"}>
+                          View{" "}
+                          <ExternalLink className="ml-2 size-5  " />
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                  }
                 </div>
               </div>
             </Card>
-          </BlurFade>
-        ))}
+          </BlurFade>)
+        )) : (
+          <p className="text-center text-lg">No Data Avaliable</p>
+        )}
+        
       </div>
     </section>
   )
