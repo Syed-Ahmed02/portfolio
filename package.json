@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=./payload.config.ts NODE_OPTIONS=\"--import tsx\" payload generate:types"
+    "generate:types": "cross-env PAYLOAD_CONFIG_PATH=./payload.config.ts NODE_OPTIONS=\"--import tsx\" payload generate:types",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap"
+
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.2",

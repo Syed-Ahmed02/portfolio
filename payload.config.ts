@@ -8,12 +8,27 @@ import { fileURLToPath } from 'url'
 import {seoPlugin} from "@payloadcms/plugin-seo"
 
 import { Experiences } from './collections/Experiences'
-import {Tags} from "./collections/Tags"
+import { Tags } from "./collections/Tags"
 import { Media } from './collections/Media'
+import { Posts } from './collections/Post'
+import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
+import { Post } from '@/payload-types'
 
+import { getServerSideURL } from './utilities/getUrl'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+
+
+const generateTitle: GenerateTitle<Post > = ({ doc }) => {
+  return doc?.title ? `${doc.title} | Syed's Portfolio` : `Syed's Portfolio`
+}
+
+const generateURL: GenerateURL<Post> = ({ doc }) => {
+  const url = getServerSideURL()
+
+  return doc?.slug ? `${url}/${doc.slug}` : url
+}
 
 export default buildConfig({
   admin: {
@@ -21,7 +36,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Media,Tags,Experiences],
+  collections: [Media,Tags,Experiences,Posts],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -35,13 +50,9 @@ export default buildConfig({
   plugins: [
     payloadCloudPlugin(),
     seoPlugin({
-      collections: [
-        'posts',
-      ],
-      uploadsCollection: 'media',
-      generateTitle: ({ doc }) => `Syedd.com — ${doc.title}`,
-      generateDescription: ({ doc }) => doc.excerpt
-    })
+      generateTitle,
+      generateURL,
+    }),  
   ],
   jobs: {
     access: {

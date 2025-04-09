@@ -1,6 +1,12 @@
 import type { CollectionConfig } from "payload";
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-
+import {
+    MetaDescriptionField,
+    MetaImageField,
+    MetaTitleField,
+    OverviewField,
+    PreviewField,
+  } from '@payloadcms/plugin-seo/fields'
 /*
  {
     title: "The Future of React: What's Coming in 2025",
@@ -47,14 +53,113 @@ export const Posts: CollectionConfig = {
                 {
                   name: 'content',
                   type: 'richText',
-                  editor: lexicalEditor(),
+                  
                   required: true,
                 },
               ],
               label: 'Content',
             },
-        
+            {
+                fields: [
+                  {
+                    name: 'relatedPosts',
+                    type: 'relationship',
+                    admin: {
+                      position: 'sidebar',
+                    },
+                    filterOptions: ({ id }) => {
+                      return {
+                        id: {
+                          not_in: [id],
+                        },
+                      }
+                    },
+                    hasMany: true,
+                    relationTo: 'posts',
+                  },
+                  {
+                    name: 'categories',
+                    type: 'relationship',
+                    admin: {
+                      position: 'sidebar',
+                    },
+                    hasMany: true,
+                    relationTo: 'tags',
+                  },
+                ],
+                label: 'Meta',
+              },
+            {
+                name: 'meta',
+                label: 'SEO',
+                fields: [
+                  OverviewField({
+                    titlePath: 'meta.title',
+                    descriptionPath: 'meta.description',
+                    imagePath: 'meta.image',
+                  }),
+                  MetaTitleField({
+                    hasGenerateFn: true,
+                  }),
+                  MetaImageField({
+                    relationTo: 'media',
+                  }),
+      
+                  MetaDescriptionField({}),
+                  PreviewField({
+                    // if the `generateUrl` function is configured
+                    hasGenerateFn: true,
+      
+                    // field paths to match the target field for data
+                    titlePath: 'meta.title',
+                    descriptionPath: 'meta.description',
+                  }),
+                ],
+              },
         ]
+      },
+      {
+        name: 'publishedAt',
+        type: 'date',
+        admin: {
+          date: {
+            pickerAppearance: 'dayAndTime',
+          },
+          position: 'sidebar',
+        },
+        hooks: {
+          beforeChange: [
+            ({ siblingData, value }) => {
+              if (siblingData._status === 'published' && !value) {
+                return new Date()
+              }
+              return value
+            },
+          ],
+        },
+      },
+      {
+        name: 'authors',
+        type: 'relationship',
+        admin: {
+          position: 'sidebar',
+        },
+        hasMany: true,
+        relationTo: 'users',
+      },
+      {
+        name:"slug",
+        type:"text",
+        admin:{
+            position: "sidebar",
+        },
+      },
+      {
+        name:"webhook",
+        type:"text",
+        admin:{
+            position:"sidebar"
+        }
       }
     ],
     versions:{
