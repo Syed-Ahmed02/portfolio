@@ -24,10 +24,10 @@ interface GalleryItem {
 }
 
 interface GalleryProps {
-  posts: Post[]
+  posts: Post[];
 }
 
-export const BlogGallery: React.FC<GalleryProps>= ({posts}) => {
+export const BlogGallery: React.FC<GalleryProps> = ({ posts }) => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -102,48 +102,49 @@ export const BlogGallery: React.FC<GalleryProps>= ({posts}) => {
               className="relative"
             >
               <CarouselContent className="-mr-4  ml-8 2xl:ml-[max(8rem,calc(50vw-700px+1rem))] 2xl:mr-[max(0rem,calc(50vw-700px-1rem))]">
-                {posts.length > 0 ? (posts.map((item) => {
-                  console.log("Blog Item:", item);
-                  console.log("Hero Image Data:", item.heroImage);
-                  return (
-                    <CarouselItem key={item.id} className="pl-4 md:max-w-[452px]  border py-8">
-                      <Link
-                        href={`/blog/${item.title}`}
-                        className="group flex flex-col justify-between"
+                {posts.length > 0 ? (
+                  posts.map((item) => {
+                    console.log("Blog Item:", item);
+                    console.log("Hero Image Data:", item.heroImage);
+                    return (
+                      <CarouselItem
+                        key={item.id}
+                        className="pl-4 md:max-w-[452px]  border py-8"
                       >
-                        <div>
-                          <div className="flex aspect-[3/2] overflow-clip rounded-xl">
-                            <div className="flex-1">
-                              <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
-                              <Image
-                                src={
-                                  typeof item.heroImage === 'object' && item.heroImage.url
-                                    ? item.heroImage.url
-                                    : `/placeholder.svg?height=300&width=300&text=${encodeURIComponent(item.title.split(" ")[0])}`
-                                }
-                                alt={item.title}
-                                width={300}
-                                height={300}
-                                className="object-cover"
-                              />
+                        <Link
+                          href={`/blog/${item.title}`}
+                          className="group flex flex-col justify-between"
+                        >
+                          <div>
+                            <div className="flex aspect-[3/2] overflow-clip rounded-xl">
+                              <div className="flex-1 aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg mr-4">
+                                <div className="relative h-full w-full transition duration-300 group-hover:scale-105">
+                                  {/* <Image
+                                    src="https://mrucujpvbprmpznsgmfr.supabase.co/storage/v1/object/public/msa_public/Photos/tarteel.png"
+                                    alt={item.title}
+                                    width={452}
+                                    height={452}
+                                    className="object-cover"
+                                  /> */}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
-                          {item.title}
-                        </div>
-                        <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9 break-words">
-                          {item.description}
-                        </div>
-                        <div className="flex items-center text-sm">
-                          Read more{" "}
-                          <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                        </div>
-                      </Link>
-                    </CarouselItem>
-                  );
-                })):(
+                          <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+                            {item.title}
+                          </div>
+                          <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9 break-words">
+                            {item.description}
+                          </div>
+                          <div className="flex items-center text-sm">
+                            Read more{" "}
+                            <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                          </div>
+                        </Link>
+                      </CarouselItem>
+                    );
+                  })
+                ) : (
                   <p className="text-center text-lg">No Data Avaliable</p>
                 )}
               </CarouselContent>
@@ -154,4 +155,3 @@ export const BlogGallery: React.FC<GalleryProps>= ({posts}) => {
     </section>
   );
 };
-

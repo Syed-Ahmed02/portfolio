@@ -10,7 +10,12 @@ const nextConfig: NextConfig = {
         port: '3000', // Or the port your app runs on (if non-standard)
         pathname: '/api/media/file/**', // Allow images from this path
       },
-      // Add other patterns if needed
+      {
+        protocol:"https",
+        hostname:"dwvobjrspnuwahpbrlvx.supabase.co",
+        port:"",
+        pathname:"/**"
+      }
     ],
   },};
 

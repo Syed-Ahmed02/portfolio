@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend("re_123456789");
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY || "");
 export async function contactEmailRequest(
   from: string,
   subject: string,
