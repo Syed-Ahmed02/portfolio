@@ -37,3 +37,17 @@ export async function fetchPostsData(props?: payloadProps){
         throw e
     }
 }
+
+export async function fetchTagsData(props?: payloadProps){
+    try {
+        const res = await payload.find({
+            collection:"tags",
+            ...props
+        })
+        return res.docs
+    } catch(e) {
+        console.error('Error fetching experience data:', e)
+        throw e
+    }
+}
+
