@@ -119,13 +119,19 @@ export const BlogGallery: React.FC<GalleryProps> = ({ posts }) => {
                             <div className="flex aspect-[3/2] overflow-clip rounded-xl">
                               <div className="flex-1 aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-lg mr-4">
                                 <div className="relative h-full w-full transition duration-300 group-hover:scale-105">
-                                  {/* <Image
-                                    src="https://mrucujpvbprmpznsgmfr.supabase.co/storage/v1/object/public/msa_public/Photos/tarteel.png"
+                                  <Image
+                                    src={
+                                      typeof item.heroImage === "object" &&
+                                      item.heroImage.url
+                                        ? item.heroImage.url
+                                        : `/placeholder.svg?height=300&width=300&text=${encodeURIComponent(
+                                            item.title.split(" ")[0]
+                                          )}`
+                                    }
                                     alt={item.title}
-                                    width={452}
-                                    height={452}
+                                    fill
                                     className="object-cover"
-                                  /> */}
+                                  />
                                 </div>
                               </div>
                             </div>

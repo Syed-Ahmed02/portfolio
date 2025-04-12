@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { GridPattern } from "../ui/grid-pattern";
 import { TextShimmer } from "../ui/text-shimmer";
 import { BlurFade } from "../ui/blur-fade";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -40,7 +42,7 @@ export default function Hero() {
               into books or participating in hackathons to stay at the cutting
               edge of technology. Feel free to{" "}
               <span className="font-bold text-foreground">
-                connect with me on Linkedin
+                connect with me on <Link href="https://www.linkedin.com/in/syed-ahmedd/" target="_blank" className="underline">Linkedin</Link>
               </span>{" "}
               or{" "}
               <span className="font-bold text-foreground">
@@ -49,16 +51,21 @@ export default function Hero() {
               the form below!
             </p>
             <div className="flex gap-4">
-              <Button>Get in touch</Button>
-              <Button variant="outline">View Resume</Button>
+              <Link href="#contact">
+                <Button>Get in touch</Button>
+              </Link>
+              <Link href="/resume.pdf" target="_blank">
+                <Button variant="outline">View Resume</Button>
+              </Link>
             </div>
           </div>
           <div className="flex justify-center md:justify-end">
             <div className="relative h-80 w-80 overflow-hidden rounded-md bg-muted/20 border border-muted">
-              <img
+              <Image
                 src="/pfp.jpeg"
                 alt="Profile"
                 className="h-full w-full object-cover"
+                fill
               />
             </div>
           </div>

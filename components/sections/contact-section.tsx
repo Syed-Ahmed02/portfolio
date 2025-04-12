@@ -63,7 +63,7 @@ export default function ContactForm() {
     }
   }
   return (
-    <section className="px-4 py-16 md:py-24 bg-background">
+    <section className="px-4 py-16 md:py-24 bg-background" id="contact">
       <div className="mb-8 flex flex-col items-center">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
           Get in Touch
