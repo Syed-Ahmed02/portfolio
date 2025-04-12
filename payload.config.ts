@@ -53,29 +53,29 @@ export default buildConfig({
       generateTitle,
       generateURL,
     }),
-    // s3Storage({
-    //   collections: {
-    //     media: {
-    //       prefix: "media",
-    //       generateFileURL: ({ prefix, filename }) => {
-    //         if (prefix !== undefined) {
-    //           return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.S3_BUCKET}/${prefix}/${filename}`;
-    //         }
-    //         return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.S3_BUCKET}/${filename}`;
-    //       },
-    //     },
-    //   },
-    //   bucket: process.env.S3_BUCKET || "default_bucket",
-    //   config: {
-    //     credentials: {
-    //       accessKeyId: process.env.S3_ACCESS_KEY_ID || "default_access_key_id",
-    //       secretAccessKey:
-    //         process.env.S3_SECRET_ACCESS_KEY || "default_secret_access_key",
-    //     },
-    //     region: process.env.S3_REGION || "default_region",
-    //     endpoint: process.env.S3_ENDPOINT || "default_endpoint",
-    //   },
-    // }),
+    s3Storage({
+      collections: {
+        media: {
+          prefix: "media",
+          generateFileURL: ({ prefix, filename }) => {
+            if (prefix !== undefined) {
+              return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.S3_BUCKET}/${prefix}/${filename}`;
+            }
+            return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.S3_BUCKET}/${filename}`;
+          },
+        },
+      },
+      bucket: process.env.S3_BUCKET || "default_bucket",
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || "default_access_key_id",
+          secretAccessKey:
+            process.env.S3_SECRET_ACCESS_KEY || "default_secret_access_key",
+        },
+        region: process.env.S3_REGION || "default_region",
+        endpoint: process.env.S3_ENDPOINT || "default_endpoint",
+      },
+    }),
   ],
   jobs: {
     access: {
