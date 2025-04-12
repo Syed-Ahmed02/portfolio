@@ -7,15 +7,15 @@ import {
     OverviewField,
     PreviewField,
   } from '@payloadcms/plugin-seo/fields'
-/*
- {
-    title: "The Future of React: What's Coming in 2025",
-    date: "March 15, 2025",
-    excerpt: "Exploring the upcoming features in React and how they will change the way we build web applications.",
-    image: "/placeholder.svg?height=200&width=400&text=React+Future",
-    category: "React"
-  },
-*/
+
+  import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+
+  import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
+  
+  // Your richtext data here
+ 
+
+
 export const Posts: CollectionConfig = {
     slug: 'posts',
     access: {
@@ -34,6 +34,7 @@ export const Posts: CollectionConfig = {
             }
         },
     },
+    
     fields: [
       {
         name: 'title',
@@ -170,7 +171,33 @@ export const Posts: CollectionConfig = {
         type:"text",
         admin:{
             position:"sidebar"
-        }
+        },
+        hooks:{
+          afterChange:[
+            async ({ data }) => {
+              if(data && data._status === "published") {
+                const webhookURL = data.webhook;
+               
+                if (webhookURL) {
+                  try {
+                    const lexicalData: SerializedEditorState = data.content
+
+                
+                    const plaintext = convertLexicalToPlaintext( {data:lexicalData} )
+                    await fetch(webhookURL, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ postId: data.id, title: data.title, postContent:plaintext, postDescription: data.description})
+                    });
+                    console.log(`Webhook triggered for post: ${data.title}`);
+                  } catch (error) {
+                    console.error("Error triggering webhook:", error);
+                  }
+                }
+              }
+            }
+          ]
+        },
       }
     ],
     versions:{

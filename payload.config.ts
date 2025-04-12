@@ -59,15 +59,17 @@ export default buildConfig({
         media: {
           prefix: "media",
           generateFileURL: ({ prefix, filename }) => {
+            const baseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/^https?:\/\//, '');
             if (prefix !== undefined) {
-              return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.S3_BUCKET}/${prefix}/${filename}`;
+              return `https://${baseUrl}/storage/v1/object/public/${process.env.S3_BUCKET}/${prefix}/${filename}`;
             }
-            return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${process.env.S3_BUCKET}/${filename}`;
+            return `https://${baseUrl}/storage/v1/object/public/${process.env.S3_BUCKET}/${filename}`;
           },
         },
       },
       bucket: process.env.S3_BUCKET || "default_bucket",
       config: {
+        forcePathStyle:true,
         credentials: {
           accessKeyId: process.env.S3_ACCESS_KEY_ID || "default_access_key_id",
           secretAccessKey:

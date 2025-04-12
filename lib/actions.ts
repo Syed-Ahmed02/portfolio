@@ -9,7 +9,7 @@ export async function contactEmailRequest(
   try {
     const res = await resend.emails.send({
       from: from,
-      to: ["delivered@resend.dev"],
+      to: process.env.NEXT_PUBLIC_RESEND_TO_EMAIL || "",
       subject: subject,
       text: text,
     });
