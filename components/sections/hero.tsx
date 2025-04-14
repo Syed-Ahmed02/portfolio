@@ -62,7 +62,7 @@ export default function Hero() {
           <div className="flex justify-center md:justify-end">
             <div className="relative h-80 w-80 overflow-hidden rounded-md bg-muted/20 border border-muted">
               <Image
-                src="/pfp.jpeg"
+                src="/pfp.png"
                 alt="Profile"
                 className="h-full w-full object-cover"
                 fill
