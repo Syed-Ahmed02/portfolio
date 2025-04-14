@@ -4,6 +4,9 @@ import ContactForm from "@/components/sections/contact-section"
 import { BlogGallery } from "@/components/sections/blog-section"
 import { fetchExperienceData, fetchPostsData } from "@/lib/api"
 
+// Set revalidation time to 1 hour (3600 seconds)
+export const revalidate = 3600;
+
 export default async function Home() {
   const [experienceData,blogData] = await Promise.all([
     fetchExperienceData({limit:50}),

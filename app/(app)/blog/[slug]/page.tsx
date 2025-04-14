@@ -5,6 +5,9 @@ import { ArrowLeft } from "lucide-react";
 import { fetchPostsData } from "@/lib/api";
 import RichText from "@/components/RichText";
 
+// Set revalidation time to 1 hour (3600 seconds)
+export const revalidate = 3600;
+
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
