@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export default async function Home() {
   const [experienceData,blogData] = await Promise.all([
-    fetchExperienceData({limit:50}),
+    fetchExperienceData({limit:50,sort:"-updatedAt"}),
     fetchPostsData({limit:10,sort:"-createdAt"})
   ])
   return (

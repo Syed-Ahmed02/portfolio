@@ -46,7 +46,7 @@ export const BlogGallery: React.FC<GalleryProps> = ({ posts }) => {
     };
   }, [carouselApi]);
   return (
-    <section className="py-32 mx-auto ">
+    <section className="py-32 mx-auto px-4 ">
       <BlurFade>
         <div className="mx-auto max-w-6xl">
           <div className="container  ">

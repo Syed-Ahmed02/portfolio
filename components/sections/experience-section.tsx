@@ -34,8 +34,7 @@ export const Experience: React.FC<ExperienceComponentProps> = ({
       );
     } else if (activeTab === "projects") {
       setDisplayData(experiences.filter((exp) => exp.type === "Project"));
-    } else if (activeTab === "volunteer") {
-      setDisplayData(experiences.filter((exp) => exp.type === "Volunteer"));
+    
     } else {
       setDisplayData(experiences);
     }
@@ -64,12 +63,6 @@ export const Experience: React.FC<ExperienceComponentProps> = ({
             >
               Projects
             </Button>
-            <Button
-              variant={activeTab === "volunteer" ? "default" : "outline"}
-              onClick={() => setActiveTab("volunteer")}
-            >
-              Volunteer Experience
-            </Button>
           </div>
         </div>
       </BlurFade>
@@ -79,7 +72,7 @@ export const Experience: React.FC<ExperienceComponentProps> = ({
             <BlurFade delay={0.1 * index + 0.2} inView key={index}>
               <Card className="w-full overflow-hidden border-muted/20 bg-card">
                 <div className="md:flex">
-                  <div className="md:w-1/3 h-48 md:h-auto relative">
+                  <div className="md:w-1/3 h-fit my-auto relative flex items-center justify-center px-1 ">
                     <Image
                       src={
                         typeof item.image === "object" && item.image.url
@@ -89,10 +82,11 @@ export const Experience: React.FC<ExperienceComponentProps> = ({
                             )}`
                       }
                       alt={item.title}
-                      width={300}
-                      height={300}
-                      className="object-cover"
-                    />
+                      height={400}
+                      width={500}
+                      style={{objectFit:"cover"}}
+                      
+                      />
                   </div>
                   <div className="md:w-2/3">
                     <CardHeader className="px-6 pt-6">
@@ -109,7 +103,7 @@ export const Experience: React.FC<ExperienceComponentProps> = ({
                             <Badge
                               key={i}
                               variant="secondary"
-                              className="bg-secondary/20 text-secondary-foreground"
+                              className=" text-secondary-foreground"
                             >
                               {typeof skill === "object" ? skill.title : skill}
                             </Badge>
