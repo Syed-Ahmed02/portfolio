@@ -8,10 +8,16 @@ export async function contactEmailRequest(
 ) {
   try {
     const res = await resend.emails.send({
-      from: from,
+      from: process.env.NEXT_PUBLIC_RESEND_TO_EMAIL || "" ,
       to: process.env.NEXT_PUBLIC_RESEND_TO_EMAIL || "",
       subject: subject,
-      text: text,
+      text: 
+      `
+      Email From:${from}
+      
+      Email Content:${text}
+      
+      `,
     });
     return res.data;
   } catch (e) {
