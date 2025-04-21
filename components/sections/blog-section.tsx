@@ -112,7 +112,7 @@ export const BlogGallery: React.FC<GalleryProps> = ({ posts }) => {
                         className="pl-4 md:max-w-[452px]  border py-8"
                       >
                         <Link
-                          href={`/blog/${item.title}`}
+                          href={`/blog/${item.slug}`}
                           className="group flex flex-col justify-between"
                         >
                           <div>
