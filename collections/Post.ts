@@ -165,6 +165,7 @@ export const Posts: CollectionConfig = {
         admin:{
             position: "sidebar",
         },
+        required:true,
       },
       {
         name:"webhook",

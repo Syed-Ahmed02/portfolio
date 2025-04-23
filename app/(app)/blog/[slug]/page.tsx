@@ -16,7 +16,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const res = await fetchPostsData({
     where: {
-      title: { equals: slug },
+      slug: { equals: slug },
     },
     limit: 1,
   });
