@@ -22,7 +22,6 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
         const categoryObj = categories.find(
           (cat) => cat.title === selectedCategory
         );
-        console.log(categoryObj)
         if (!categoryObj) return false;
 
         //JSON.stringify to compare two objects

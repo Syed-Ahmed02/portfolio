@@ -104,8 +104,7 @@ export const BlogGallery: React.FC<GalleryProps> = ({ posts }) => {
               <CarouselContent className="-mr-4  ml-8 2xl:ml-[max(8rem,calc(50vw-700px+1rem))] 2xl:mr-[max(0rem,calc(50vw-700px-1rem))]">
                 {posts.length > 0 ? (
                   posts.map((item) => {
-                    console.log("Blog Item:", item);
-                    console.log("Hero Image Data:", item.heroImage);
+                   
                     return (
                       <CarouselItem
                         key={item.id}
