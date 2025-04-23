@@ -210,7 +210,7 @@ export interface Post {
   };
   publishedAt?: string | null;
   authors?: (number | User)[] | null;
-  slug?: string | null;
+  slug: string;
   webhook?: string | null;
   updatedAt: string;
   createdAt: string;
