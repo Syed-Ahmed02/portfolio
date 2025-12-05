@@ -22,7 +22,6 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
         const categoryObj = categories.find(
           (cat) => cat.title === selectedCategory
         );
-        console.log(categoryObj)
         if (!categoryObj) return false;
 
         //JSON.stringify to compare two objects
@@ -68,7 +67,7 @@ export default function BlogClient({ posts, categories }: BlogClientProps) {
           {filteredPosts.map((post, index) => (
             <div className="pl-4 md:max-w-[452px]  border py-8" key={index}>
               <Link
-                href={`/blog/${post.title}`}
+                href={`/blog/${post.slug}`}
                 className="group flex flex-col justify-between"
               >
                 <div>

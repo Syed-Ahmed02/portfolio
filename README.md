@@ -2,7 +2,6 @@
 
 A modern, responsive personal portfolio website built with Next.js 15, featuring a headless CMS for content management, blog functionality, and a contact form with email integration.
 
-![Portfolio Screenshot](public/portfolio-screenshot.png)
 
 ## Features
 

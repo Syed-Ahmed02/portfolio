@@ -24,7 +24,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { contactEmailRequest } from "@/lib/actions";
 
 const formSchema = z.object({
   first_name: z.string().min(1),
@@ -49,9 +48,23 @@ export default function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       "use server"
-      const res = await contactEmailRequest(values.email,values.subject,values.message)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/send`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: values.email,
+          subject: values.subject,
+          text: values.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
       
-      toast.success("I have recieved your message and will respond soon", {
+      toast.success("I have received your message and will respond soon", {
         position: "top-center",
       });
       form.reset();
